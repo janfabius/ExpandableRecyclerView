@@ -27,6 +27,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemVH> {
     @Override
     public void onBindViewHolder(Adapter.ItemVH holder, int position) {
 
+        Model model = modelList.get(position);
+        holder.titleView.setText(model.getTitle());
+        holder.dayView.setText(model.getDay());
+        holder.ratingView.setText(model.getRating());
+        holder.summaryView.setText(model.getSummary());
+        boolean isExpandad = modelList.get(position).isExpanded();
+        holder.expandableLayout.setVisibility(isExpandad ? View.VISIBLE:View.GONE);
+
     }
 
     @Override
@@ -46,6 +54,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemVH> {
             ratingView = itemView.findViewById(R.id.rating);
             summaryView = itemView.findViewById(R.id.summary);
             expandableLayout = itemView.findViewById(R.id.expandableLayout);
+
+            //create button for expandable
+            titleView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Model model = modelList.get(getAdapterPosition());
+                    model.setExpanded(!model.isExpanded());
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
+
         }
     }
 }
