@@ -17,6 +17,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemVH> {
     private static final String TAG = "Adapter";
     List<Model> modelList;
 
+    public Adapter(List<Model> modelList) {
+        this.modelList = modelList;
+    }
+
 
     @Override
     public Adapter.ItemVH onCreateViewHolder(ViewGroup parent, int viewType) {

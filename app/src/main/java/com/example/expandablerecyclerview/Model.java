@@ -15,6 +15,7 @@ public class Model {
         this.day = day;
         this.summary = summary;
 
+        this.expanded = false;
     }
 
 
